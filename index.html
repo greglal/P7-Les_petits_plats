@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>Les petits plats</title>
+    <!-- font anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <!-- font manrop -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+
+    <!-- font roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+    <div id="header-search">
+        <div id="logo"><a href="#" >LES PETITS PLATS &#x25CE;</a></div>
+
+        <div id="search-section">
+            <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DELICIEUSES</h1>
+            <div id="search">
+                <input type="search" placeholder="Rechercher une recette, un ingrédient ..." id="search-bar">
+                <img src="assets/icons/search.png" alt="search icon" id="search-icon">
+                <img src="assets/icons/close.svg" alt="clear search" class="search-clean">
+            </div>
+        </div>
+    </div>
+
+    <div id="search-nav">
+        <div id="filter-utils">
+            <div id="dropdown-menus">
+                <div class="dropdown-parent">
+                    <button id="ingredients-tag-btn" class="btn-filter" type="button">Ingrédients
+                        <span class="fas fa-chevron-down"></span>
+                    </button>
+
+                    <div class="opened-btn-contianer hidden" id="ingredients-btn-container">
+                        <div id="test">
+                            <input type="text" name="search-ingredients" placeholder="" id="ingredients-tag-search"
+                                   class="tag-searchbar">
+                            <span class="fas fa-chevron-up" id="btn1"></span>
+                        </div>
+
+                        <div class="container-tag-options">
+                            <ul class="dropdown-choices" id="ingredients-dropdown">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-parent">
+                    <button id="appareils-tag-btn" class="btn-filter" type="button">Appareils
+                        <span class="fas fa-chevron-down"></span>
+                    </button>
+
+                    <div class="opened-btn-contianer  hidden" id="appareils-container">
+                        <div id="appareils-btn-container">
+                            <input type="text" name="search-ingredients" placeholder="" id="appareils-tag-search"
+                                   class="tag-searchbar">
+                            <span class="fas fa-chevron-up"></span>
+                        </div>
+
+                        <div class="container-tag-options">
+                            <ul class="dropdown-choices" id="appareils-dropdown">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-parent">
+                    <button id="ustensiles-tag-btn" class="btn-filter" type="button">Ustensiles
+                        <span class="fas fa-chevron-down"></span>
+                    </button>
+
+                    <div class="opened-btn-contianer ustensiles-container hidden" id="ustensiles-container">
+                        <div id="ustensiles-btn-container">
+                            <input type="text" name="search-ingredients" placeholder="" id="ustensiles-tag-search"
+                                   class="tag-searchbar">
+                            <span class="fas fa-chevron-up"></span>
+                        </div>
+
+                        <div class="container-tag-options">
+                            <ul class="dropdown-choices" id="ustensiles-dropdown">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tag-selected"></div>
+        </div>
+
+        <div id="number-of-recipes"></div>
+
+    </div>
+</header>
+
+<section id="recipes-cards"></section>
+
+<script src="scripts/globals/globals.js"></script>
+<script src="scripts/api/api.js"></script>
+<script src="scripts/utils/search.js"></script>
+<script src="scripts/utils/dropdowns.js"></script>
+
+<!--<script src="scripts/utils/filters.js"></script>-->
+<script src="scripts/factories/recipes.js"></script>
+<script src="scripts/pages/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>    <script src="https://kit.fontawesome.com/1b967e38da.js" crossorigin="anonymous"></script>
+</body>
+</html>
