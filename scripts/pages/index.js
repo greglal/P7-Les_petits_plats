@@ -1,9 +1,9 @@
 'use strict'
 
 function displayData(recipes) {
-    recipes.forEach((recipe) => {
-        createRecipeCard(recipe)
-    })
+    for (let i = 0; i < recipes.length; i++) {
+        createRecipeCard(recipes[i])
+    }
 }
 
 async function init() {

@@ -86,9 +86,9 @@ function recipesActualisation(recipes) {
     const recipesSection = document.querySelector('#recipes-cards');
     recipesSection.innerHTML ='';
 
-    recipes.forEach((recipe) => {
-        createRecipeCard(recipe);
-    })
+    for (let i = 0; i < recipes.length; i++) {
+        createRecipeCard(recipes[i]);
+    }
 
     // reset recipes counter
     recipesCounter(recipes)

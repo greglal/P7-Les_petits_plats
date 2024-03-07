@@ -80,22 +80,16 @@ function ingredientTagList(recipes){
 
     //open or close tag list div
     ingredientFilterBtn.addEventListener('click', () => {
-        if (clicked ===
-            false) {
-            ingredientsContainer.style.display =
-                "block";
-            clicked =
-                true;
+        if (clicked === false) {
+            ingredientsContainer.style.display = "block";
+            clicked = true;
         } else {
-            ingredientsContainer.style.display =
-                "none";
-            clicked =
-                false;
+            ingredientsContainer.style.display = "none";
+            clicked = false;
         }
 
         // Look if recipes list filtered after search
-        if (recipesFiltered.length >
-            0) {
+        if (recipesFiltered.length > 0) {
             recipesFiltered.forEach((recipe) => {
                 recipe.ingredients.forEach((ingredient) => setIngTagList.add(ingredient.ingredient));
             });
@@ -111,19 +105,17 @@ function ingredientTagList(recipes){
         ingredientsTagContainer.innerHTML = '';
 
         // create ingredients list
-        ingTagList.forEach((item) => {
-            ingredientsTagContainer.innerHTML += `<li class="ing">${item}</li>`;
-
-        });
-
+        for (let i = 0; i < ingTagList.length; i++) {
+            ingredientsTagContainer.innerHTML += `<li class="ing">${ingTagList[i]}</li>`;
+        }
         // display tag selected
         const ingItems = document.querySelectorAll('.ing');
 
-        ingItems.forEach((item)=> {
-            item.addEventListener('click', ()=> {
+        for (let i=0; i<ingItems.length; i++) {
+            ingItems[i].addEventListener('click', ()=> {
                 const tagChoosen = document.createElement("div");
                 const tagSelected = document.querySelector('#tag-selected');
-                tagList.push(item.textContent)
+                tagList.push(ingItems[i].textContent)
                 console.log(tagList)
 
                 // search bar in tag list
@@ -135,17 +127,14 @@ function ingredientTagList(recipes){
 
                 // display tag & filter recipes
                 if(recipesFiltered.length>0){
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipesFiltered)
+                    displayChoosenTag(tagChoosen, tagSelected, ingItems[i], recipesFiltered)
                     closeTag(tagChoosen, recipesFiltered)
                 }else {
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipes)
+                    displayChoosenTag(tagChoosen, tagSelected, ingItems[i], recipes)
                     closeTag(tagChoosen, recipes)
                 }
             })
-        })
-
-
-
+        }
     })
 }
 
@@ -196,11 +185,11 @@ function applianceTagList(recipes){
         // display tag selected
         const appItems = document.querySelectorAll('.app');
 
-        appItems.forEach((item)=> {
-            item.addEventListener('click', ()=> {
+        for (let i=0; i< appItems.length; i++) {
+            appItems[i].addEventListener('click', ()=> {
                 const tagChoosen = document.createElement("div");
                 const tagSelected = document.querySelector('#tag-selected');
-                tagList.push(item.textContent)
+                tagList.push(appItems[i].textContent)
                 console.log(tagList)
 
                 // search bar in tag list
@@ -212,16 +201,14 @@ function applianceTagList(recipes){
 
                 // display tag & filter recipes
                 if(recipesFiltered.length>0){
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipesFiltered)
+                    displayChoosenTag(tagChoosen, tagSelected, appItems[i], recipesFiltered)
                     closeTag(tagChoosen, recipesFiltered)
                 }else {
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipes)
+                    displayChoosenTag(tagChoosen, tagSelected, appItems[i], recipes)
                     closeTag(tagChoosen, recipes)
                 }
             })
-        })
-
-
+        }
     })
 }
 
@@ -272,11 +259,11 @@ function ustensilsTagList(recipes){
         // display tag selected
         const ustItems = document.querySelectorAll('.ust');
 
-        ustItems.forEach((item)=> {
-            item.addEventListener('click', ()=> {
+        for (let i=0; i<ustItems.length; i++){
+            ustItems[i].addEventListener('click', ()=> {
                 const tagChoosen = document.createElement("div");
                 const tagSelected = document.querySelector('#tag-selected');
-                tagList.push(item.textContent)
+                tagList.push(ustItems[i].textContent)
                 console.log(tagList)
 
                 // search bar in tag list
@@ -288,14 +275,14 @@ function ustensilsTagList(recipes){
 
                 // display tag & filter recipes
                 if(recipesFiltered.length>0){
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipesFiltered)
+                    displayChoosenTag(tagChoosen, tagSelected, ustItems[i], recipesFiltered)
                     closeTag(tagChoosen, recipesFiltered)
                 }else {
-                    displayChoosenTag(tagChoosen, tagSelected, item, recipes)
+                    displayChoosenTag(tagChoosen, tagSelected, ustItems[i], recipes)
                     closeTag(tagChoosen, recipes)
                 }
             })
-        })
+        }
     })
 }
 

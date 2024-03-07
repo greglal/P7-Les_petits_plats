@@ -98,7 +98,6 @@ function recipesCounter(recipes) {
     counter.textContent = `${recipes.length} recettes`;
 
     if(recipes.length === 0) {
-        let input = document.getElementById('search-bar');
         const Section = document.querySelector('#recipes-cards');
         const noResult = document.createElement("div");
         const errMsg = document.createElement("p");
