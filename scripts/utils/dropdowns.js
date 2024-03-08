@@ -44,24 +44,24 @@ function closeTag(tag, recipes) {
  * @param tagList
  * @param container
  * @param bar
+ * @param dot
  */
-function searchIngTagList(tagList, container, bar) {
+function searchIngTagList(tagList, container, bar, dot) {
     const searchTagListInput = document.querySelector(bar);
+    const tags = container.querySelectorAll(dot);
 
     searchTagListInput.addEventListener("input", (e)=> {
-        container.innerHTML = "";
-        const searchedString = e.target.value.toLowerCase();
-        const filteredArr = tagList.filter(el => el.toLowerCase().includes(searchedString));
-        let tag
-
-        for (let i = 0; i < filteredArr.length; i++) {
-            tag = filteredArr[i];
-            container.innerHTML += `<li class="ing">${tag}</li>`;
-
+        const searchedString = e.target.value.trim().toLowerCase();
+        for (let i = 0; i < tags.length; i++) {
+            const tag = tags[i];
+            const tagName = tag.textContent.toLowerCase();
+            if (tagName.includes(searchedString)) {
+                tag.style.display = "block";
+            } else {
+                tag.style.display = "none";
+            }
         }
-    })
-
-
+    });
 }
 
 /**
@@ -70,7 +70,6 @@ function searchIngTagList(tagList, container, bar) {
  * @param recipes
  */
 function ingredientDropDown(recipes){
-    const ingredientsTagContainer = document.querySelector('#ingredients-dropdown');
     const ingredientFilterBtn = document.getElementById('ingredients-tag-btn');
     const ingredientsContainer = document.getElementById('ingredients-btn-container');
 
@@ -96,9 +95,6 @@ function ingredientDropDown(recipes){
                 const tagChoosen = document.createElement("div");
                 const tagSelected = document.querySelector('#tag-selected');
                 tagList.push(ingItems[i].textContent)
-
-                // search bar in tag list
-                searchIngTagList(ingTagList, ingredientsTagContainer, '#ingredients-tag-search')
 
                 // close dropdown menu
                 ingredientsContainer.style.display = "none";
@@ -136,6 +132,10 @@ function ingredientTagList(recipes){
     for (let i = 0; i < ingTagList.length; i++) {
         ingredientsTagContainer.innerHTML += `<li class="ing">${ingTagList[i]}</li>`;
     }
+
+    // search bar in tag list
+    searchIngTagList(ingTagList, ingredientsTagContainer, '#ingredients-tag-search', '.ing')
+    return ingTagList
 }
 
 /**
@@ -144,7 +144,6 @@ function ingredientTagList(recipes){
  * @param recipes
  */
 function applianceDropdown(recipes){
-    const applianceTagContainer = document.querySelector(`#appareils-dropdown`);
     const applianceContainer = document.querySelector('#appareils-container');
     const applianceFilterBtn = document.querySelector('#appareils-tag-btn');
 
@@ -171,9 +170,6 @@ function applianceDropdown(recipes){
                 const tagSelected = document.querySelector('#tag-selected');
                 tagList.push(appItems[i].textContent)
                 console.log(tagList)
-
-                // search bar in tag list
-                searchIngTagList(appTagList, applianceTagContainer, '#appareils-tag-search')
 
                 // close dropdown menu
                 applianceContainer.style.display = "none";
@@ -209,6 +205,9 @@ function appliancTagList(recipes){
         applianceTagContainer.innerHTML += `<li class="app">${appTagList[i]}</li>`;
     }
 
+    // search bar in tag list
+    searchIngTagList(appTagList, applianceTagContainer, '#appareils-tag-search', '.app')
+
     return appTagList
 }
 
@@ -218,7 +217,6 @@ function appliancTagList(recipes){
  * @param recipes
  */
 function ustensilsDropdown(recipes){
-    const ustensilsTagContainer = document.querySelector('#ustensiles-dropdown');
     const ustensilsFilterBtn = document.querySelector('#ustensiles-tag-btn');
     const ustensilesContainer = document.querySelector('#ustensiles-container');
 
@@ -245,9 +243,6 @@ function ustensilsDropdown(recipes){
                 const tagChoosen = document.createElement("div");
                 const tagSelected = document.querySelector('#tag-selected');
                 tagList.push(ustItems[i].textContent)
-
-                // search bar in tag list
-                searchIngTagList(ustTagList, ustensilsTagContainer, '#ustensiles-tag-search')
 
                 // close dropdown menu
                 ustensilesContainer.style.display = "none";
@@ -285,6 +280,9 @@ function ustensilsTagList(recipes) {
     for (let i = 0; i < ustTagList.length; i++) {
         ustensilsTagContainer.innerHTML += `<li class="ust">${ustTagList[i]}</li>`;
     }
+
+    // search bar in tag list
+    searchIngTagList(ustTagList, ustensilsTagContainer, '#ustensiles-tag-search', '.ust')
 
     return ustTagList
 }
