@@ -7,14 +7,16 @@ function displayData(recipes) {
 }
 
 async function init() {
-    const recipes = await getRecipes();
+    allRecipes = await getRecipes();
 
-    displayData(recipes)
-    recipesCounter(recipes)
-    mainSearch(recipes)
-    ingredientTagList(recipes)
-    applianceTagList(recipes)
-    ustensilsTagList(recipes)
+    displayData(allRecipes)
+    recipesCounter(allRecipes)
+    mainSearch(allRecipes)
+    ingredientDropDown(allRecipes)
+    applianceDropdown(allRecipes)
+    ustensilsDropdown(allRecipes)
+
+    return allRecipes
 
 }
 

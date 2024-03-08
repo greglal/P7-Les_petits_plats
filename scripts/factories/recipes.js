@@ -98,12 +98,13 @@ function recipesCounter(recipes) {
     counter.textContent = `${recipes.length} recettes`;
 
     if(recipes.length === 0) {
+        let input = document.getElementById('search-bar');
         const Section = document.querySelector('#recipes-cards');
         const noResult = document.createElement("div");
         const errMsg = document.createElement("p");
         noResult.classList.add("noResult");
         errMsg.classList.add("errMsg")
-        errMsg.textContent ="Aucune recette ne correspond à votre recherche"
+        errMsg.textContent =`Aucune recette ne contient "${input.value}", vous pouvez recherchez "tomate" ou "oignon" ...`
         Section.appendChild(noResult)
         noResult.appendChild(errMsg)
     }
