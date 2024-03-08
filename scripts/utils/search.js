@@ -69,23 +69,22 @@ function searchByTag(recipes){
             let matchesAllTags = true;
 
             // check if recipes matches to selected tags
-            for (const tag of tagList) {
+            tagList.forEach(tag => {
                 // check if selected tag is in ingredients
                 if (recipe.ingredients.some(ingredient => ingredient.ingredient === tag)) {
-                    continue;
+                    return;
                 }
                 // check if selected tag is in appliances
                 if (recipe.appliance === tag) {
-                    continue;
+                    return;
                 }
-                // check if selected taf is in ustensils
+                // check if selected tag is in ustensils
                 if (recipe.ustensils.includes(tag)) {
-                    continue;
+                    return;
                 }
                 // if no matches
                 matchesAllTags = false;
-                break;
-            }
+            });
             return matchesAllTags;
         });
         recipesActualisation(recipesFiltered);
