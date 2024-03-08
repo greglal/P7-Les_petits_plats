@@ -12,27 +12,42 @@ function mainSearch(recipes) {
 
     input.addEventListener('keyup', (e) => {
         e.preventDefault();
-
-        if(input.value.length >= 2) {
-            recipesFiltered = recipes.filter(recipe => {
-                return (
-                    recipe.name.toLowerCase().includes(input.value.toLowerCase()) ||
-                    recipe.description.toLowerCase().includes(input.value.toLowerCase()) ||
-                    recipe.ingredients.some(ingredient => {
-                        if (typeof ingredient === 'string') {
-                            return ingredient.toLowerCase().includes(input.value.toLowerCase());
-                        } else {
-                            return false;
-                        }
-                    })
-                );
-            })
-            recipesActualisation(recipesFiltered)
-        } else {
-            recipesActualisation(recipes);
-
-        }
+        search(recipes, input.value)
     })
+
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        search(recipes, input.value)
+    })
+
+}
+
+/**
+ * search function
+ *
+ * @param recipes
+ * @param value
+ * @returns {[]}
+ */
+function search(recipes, value){
+    if(value.length >= 2) {
+        recipesFiltered = recipes.filter(recipe => {
+            return (
+                recipe.name.toLowerCase().includes(value.toLowerCase()) ||
+                recipe.description.toLowerCase().includes(value.toLowerCase()) ||
+                recipe.ingredients.some(ingredient => {
+                    if (typeof ingredient === 'string') {
+                        return ingredient.toLowerCase().includes(value.toLowerCase());
+                    } else {
+                        return false;
+                    }
+                })
+            );
+        })
+        recipesActualisation(recipesFiltered)
+    } else {
+        recipesActualisation(recipes);
+    }
     return recipesFiltered
 }
 
@@ -40,40 +55,46 @@ function mainSearch(recipes) {
  * search by click on tag
  *
  * @param recipes
- * @param tagList
  */
 function searchByTag(recipes){
     let recipesFiltered = [...recipes];
 
-    // Si des tags sont sélectionnés
+    // if tags are selected
     if (tagList.length > 0) {
         recipesFiltered = recipesFiltered.filter(recipe => {
             let matchesAllTags = true;
 
-            // Vérifie si la recette correspond à tous les tags sélectionnés
+            // check if recipes matches to selected tags
             for (const tag of tagList) {
-                // Vérifie si le tag est présent dans les ingrédients
+                // check if selected tag is in ingredients
                 if (recipe.ingredients.some(ingredient => ingredient.ingredient === tag)) {
-                    continue; // Passe au tag suivant
+                    continue;
                 }
-                // Vérifie si le tag est l'appareil
+                // check if selected tag is in appliances
                 if (recipe.appliance === tag) {
-                    continue; // Passe au tag suivant
+                    continue;
                 }
-                // Vérifie si le tag est dans les ustensiles
+                // check if selected taf is in ustensils
                 if (recipe.ustensils.includes(tag)) {
-                    continue; // Passe au tag suivant
+                    continue;
                 }
-                // Si le tag n'est pas trouvé, la recette ne correspond pas à tous les tags
+                // if no matches
                 matchesAllTags = false;
-                break; // Sort de la boucle
+                break;
             }
-            return matchesAllTags; // Renvoie true si la recette correspond à tous les tags
+            return matchesAllTags;
         });
+        recipesActualisation(recipesFiltered);
+        ingredientDropDown(recipesFiltered)
+        applianceDropdown(recipesFiltered)
+        ustensilsDropdown(recipesFiltered)
+    } else if(tagList.length ===0){
+        recipesActualisation(allRecipes)
+        ingredientDropDown(allRecipes)
+        applianceDropdown(allRecipes)
+        ustensilsDropdown(allRecipes)
     }
 
-    recipesActualisation(recipesFiltered);
-    ingredientTagList(recipesFiltered)
     return recipesFiltered;
 }
 
