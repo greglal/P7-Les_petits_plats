@@ -5,6 +5,8 @@
  *
  * @param tag
  * @param parentTag
+ * @param item
+ * @param recipes
  */
 function displayChoosenTag(tag, parentTag, item, recipes) {
     tag.innerHTML = `<div class="tags"><p class= "tag">${item.textContent}</p>
@@ -41,6 +43,7 @@ function closeTag(tag, recipes) {
  *
  * @param tagList
  * @param container
+ * @param bar
  */
 function searchIngTagList(tagList, container, bar) {
     const searchTagListInput = document.querySelector(bar);
