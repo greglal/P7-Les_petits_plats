@@ -48,6 +48,10 @@ function search(recipes, value){
     } else {
         recipesActualisation(recipes);
     }
+    ingredientDropDown(recipesFiltered)
+    applianceDropdown(recipesFiltered)
+    ustensilsDropdown(recipesFiltered)
+
     return recipesFiltered
 }
 
