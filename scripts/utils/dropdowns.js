@@ -94,8 +94,6 @@ function ingredientDropDown(recipes){
                 const tagSelected = document.querySelector('#tag-selected');
                 tagList.push(item.textContent)
 
-
-
                 // close dropdown menu
                 ingredientsContainer.style.display = "none";
                 clicked = false;
